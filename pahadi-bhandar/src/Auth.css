@@ -1,0 +1,92 @@
+/* General Auth Page Container */
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #064420, #0d6230);
+  padding: 20px;
+}
+
+/* Box */
+.auth-box {
+  background: white;
+  padding: 40px;
+  border-radius: 18px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  max-width: 400px;
+  animation: slideUp 0.8s ease-in-out;
+}
+
+/* Title */
+.auth-box h2 {
+  margin-bottom: 20px;
+  text-align: center;
+  color: #064420;
+  font-size: 1.8rem;
+}
+
+/* Form Inputs */
+.auth-box input {
+  width: 100%;
+  padding: 12px 15px;
+  margin: 12px 0;
+  border: 1.5px solid #ccc;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.auth-box input:focus {
+  border-color: #ff6f3c;
+  outline: none;
+  box-shadow: 0 0 6px rgba(255, 111, 60, 0.4);
+}
+
+/* Button */
+.auth-box .btn {
+  width: 100%;
+  background: linear-gradient(90deg, #ff6f3c, #ff914d);
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: all 0.3s ease;
+}
+
+.auth-box .btn:hover {
+  background: linear-gradient(90deg, #ff914d, #ff6f3c);
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* Extra Text */
+.auth-box p {
+  text-align: center;
+  margin-top: 18px;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.auth-box a {
+  color: #ff6f3c;
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.auth-box a:hover {
+  color: #e55c2e;
+  text-decoration: underline;
+}
+
+/* Animation */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
