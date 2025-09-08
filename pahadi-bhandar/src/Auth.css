@@ -90,3 +90,27 @@
   from { opacity: 0; transform: translateY(40px); }
   to { opacity: 1; transform: translateY(0); }
 }
+/* Auth pages (login/signup) responsive */
+@media (max-width: 600px) {
+  .auth-box {
+    padding: 20px;
+    width: 90%;
+  }
+
+  .auth-box h2 {
+    font-size: 1.5rem;
+  }
+
+  .auth-box input {
+    padding: 10px;
+  }
+
+  .auth-box .btn {
+    padding: 10px;
+    font-size: 0.95rem;
+  }
+
+  .auth-box p {
+    font-size: 0.85rem;
+  }
+}

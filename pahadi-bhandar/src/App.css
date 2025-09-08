@@ -258,3 +258,27 @@ nav a:hover {
   color: #ff6f3c;
   margin-bottom: 12px;
 }
+/* ====== Responsive CSS ====== */
+@media (max-width: 1024px) {
+  .header { flex-direction: column; align-items: flex-start; padding: 15px 20px; }
+  nav { margin-top: 10px; }
+  nav a { margin: 8px 5px; }
+  .hero { height: 70vh; }
+  .hero h1 { font-size: 2rem; }
+  .hero p { font-size: 1rem; }
+  .vill { width: 80%; height: auto; }
+  .shop-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; }
+  #para { width: 90%; }
+  .mission, .products { width: 90%; padding: 30px 15px; }
+}
+
+@media (max-width: 600px) {
+  .header { padding: 10px 15px; }
+  .hero { height: 60vh; }
+  .hero-overlay { padding: 20px; }
+  .hero h1 { font-size: 1.5rem; }
+  .hero p { font-size: 0.9rem; }
+  .shop-card img { height: 150px; }
+  .vill { width: 95%; height: auto; }
+  .shop-grid { grid-template-columns: 1fr; gap: 12px; }
+}
