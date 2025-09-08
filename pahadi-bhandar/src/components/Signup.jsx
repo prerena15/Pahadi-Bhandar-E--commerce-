@@ -1,7 +1,7 @@
-// src/components/Signup.jsx
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../Auth.css";
+import { API_URL } from "../api"; // <-- import API_URL
 
 function Signup() {
   const [fullName, setFullName] = useState("");
@@ -16,14 +16,15 @@ function Signup() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-
     if (!validatePassword(password)) {
-      alert("Password must be at least 8 chars, 1 uppercase, 1 number, 1 special char.");
+      alert(
+        "Password must be at least 8 chars, 1 uppercase, 1 number, 1 special char."
+      );
       return;
     }
 
     try {
-      const res = await fetch("http://localhost:5000/api/auth/signup", {
+      const res = await fetch(`${API_URL}/auth/signup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name: fullName, email, password }),
@@ -65,10 +66,12 @@ function Signup() {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <button type="submit" className="btn">Signup</button>
+          <button type="submit" className="btn">
+            Signup
+          </button>
         </form>
         <p>
-          Already have an account? <a href="/login">Login</a>
+          Already have an account? <Link to="/login">Login</Link>
         </p>
       </div>
     </div>

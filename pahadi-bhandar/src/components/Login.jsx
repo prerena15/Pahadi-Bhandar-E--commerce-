@@ -1,7 +1,7 @@
-// src/components/Login.jsx
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../Auth.css";
+import { API_URL } from "../api"; // <-- import API_URL
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -11,7 +11,7 @@ function Login() {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      const res = await fetch("http://localhost:5000/api/auth/login", {
+      const res = await fetch(`${API_URL}/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
@@ -46,10 +46,12 @@ function Login() {
             placeholder="Password"
             required
           />
-          <button type="submit" className="btn">Login</button>
+          <button type="submit" className="btn">
+            Login
+          </button>
         </form>
         <p>
-          Don’t have an account? <a href="/signup">Signup</a>
+           Don’t have an account? <Link to="/signup">Signup</Link>
         </p>
       </div>
     </div>

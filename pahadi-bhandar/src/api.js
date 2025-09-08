@@ -1,0 +1,1 @@
+export const API_URL = "https://pahadi-bhandar-backend.onrender.com/api";

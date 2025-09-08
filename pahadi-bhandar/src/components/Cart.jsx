@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { API_URL } from "../api"; // <-- import API_URL
 
 function Cart() {
   const [cart, setCart] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
   const token = localStorage.getItem("token");
 
-  // ✅ Fetch cart items
   useEffect(() => {
     if (!token) {
       setError("Please login to see your cart.");
@@ -15,7 +14,7 @@ function Cart() {
       return;
     }
 
-    fetch("http://localhost:5000/api/cart", {
+    fetch(`${API_URL}/cart`, {
       headers: { Authorization: "Bearer " + token },
       credentials: "include",
     })
@@ -28,10 +27,9 @@ function Cart() {
       .finally(() => setLoading(false));
   }, [token]);
 
-  // ✅ Update quantity
   const updateQty = async (productId, qty) => {
     try {
-      const res = await fetch(`http://localhost:5000/api/cart/${productId}`, {
+      const res = await fetch(`${API_URL}/cart/${productId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -48,10 +46,9 @@ function Cart() {
     }
   };
 
-  // ✅ Remove item
   const removeFromCart = async (productId) => {
     try {
-      const res = await fetch(`http://localhost:5000/api/cart/${productId}`, {
+      const res = await fetch(`${API_URL}/cart/${productId}`, {
         method: "DELETE",
         headers: { Authorization: "Bearer " + token },
       });
@@ -64,7 +61,6 @@ function Cart() {
     }
   };
 
-  // ✅ Calculate total
   const totalPrice = cart.reduce(
     (sum, item) => sum + (item.product?.price || 0) * item.qty,
     0
@@ -86,18 +82,19 @@ function Cart() {
                 <img src={item.product?.image} alt={item.product?.name} />
                 <h3>{item.product?.name}</h3>
                 <p className="price">₹{item.product?.price}</p>
-
-                {/* Quantity Controls */}
                 <div>
-                  <button onClick={() => updateQty(item.product._id, item.qty - 1)}>
+                  <button
+                    onClick={() => updateQty(item.product._id, item.qty - 1)}
+                  >
                     -
                   </button>
                   <span style={{ margin: "0 10px" }}>{item.qty}</span>
-                  <button onClick={() => updateQty(item.product._id, item.qty + 1)}>
+                  <button
+                    onClick={() => updateQty(item.product._id, item.qty + 1)}
+                  >
                     +
                   </button>
                 </div>
-
                 <button
                   className="buy-btn"
                   onClick={() => removeFromCart(item.product._id)}
@@ -108,7 +105,6 @@ function Cart() {
               </div>
             ))}
           </div>
-
           <div
             style={{
               marginTop: "30px",

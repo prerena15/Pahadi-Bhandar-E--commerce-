@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { API_URL } from "../api"; // <-- import API_URL
 
 function Shop() {
   const [products, setProducts] = useState([]);
@@ -13,7 +14,7 @@ function Shop() {
   // Fetch products from backend
   const fetchProducts = () => {
     setLoading(true);
-    let url = "http://localhost:5000/api/products?";
+    let url = `${API_URL}/products?`;
 
     if (category) url += `category=${category}&`;
     if (minPrice) url += `minPrice=${minPrice}&`;
@@ -33,9 +34,7 @@ function Shop() {
     fetchProducts();
   }, []);
 
-  const handleFilter = () => {
-    fetchProducts();
-  };
+  const handleFilter = () => fetchProducts();
 
   const addToCart = async (productId) => {
     const token = localStorage.getItem("token");
@@ -45,7 +44,7 @@ function Shop() {
     }
 
     try {
-      const res = await fetch(`http://localhost:5000/api/cart/${productId}`, {
+      const res = await fetch(`${API_URL}/cart/${productId}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -68,7 +67,6 @@ function Shop() {
     <section className="shop">
       <h2>Shop Now</h2>
 
-      {/* Filter Section */}
       <div style={{ marginBottom: 20 }}>
         <select value={category} onChange={(e) => setCategory(e.target.value)}>
           <option value="">All Categories</option>
