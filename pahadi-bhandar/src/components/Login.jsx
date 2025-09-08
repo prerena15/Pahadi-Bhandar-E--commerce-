@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "../Auth.css";
 import { API_URL } from "../api"; // <-- import API_URL
 
@@ -51,8 +51,9 @@ function Login() {
           </button>
         </form>
         <p>
-           Don’t have an account? <Link to="/signup">Signup</Link>
-        </p>
+         Don’t have an account? <Link to="/signup">Signup</Link>
+       </p>
+
       </div>
     </div>
   );
